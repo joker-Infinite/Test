@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <title>滚轮事件</title>
 </head>
-<body style="padding: 0;margin: 0;background: #999999">
+<body style="padding: 0;margin: 0;background: #999999" id="body">
 <div style="width: 100%;height: 200px;background: #AAA" onmouseover="mouseOver()"></div>
 </body>
 <script>
+  /*Chrome IE Edge*/
   function mouseOver() {
     let ev = window.event;
     let tag = ev.target;
@@ -16,5 +17,14 @@
       console.log(ev.wheelDelta);
     }
   }
+
+  /*Firefox*/
+  let ev = window.event;
+  let dom = document.getElementById('body');
+  dom.addEventListener("DOMMouseScroll", function (e) {
+    let event = e || ev;
+    // 这里是事件函数主体
+    console.log(event.detail);
+  })
 </script>
 </html>
