@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fbfbfb;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: red;
+  transition: linear 0.5s;
+}
+
+.box:hover {
+  /*顺时针 旋转30度*/
+  /*transform: rotate(30deg);*/
+  /*向右移动60像素*/
+  /*transform: translate(60px);*/
+  /*放大 参数为倍数 可为小数 负数时 先缩小再复原*/
+  /*transform: scale(-1.2);*/
+  /*旋转 20度会发生形变*/
+  /*transform: skew(20deg);*/
+  transform: matrix(0.866,0.5,-0.5,0.866,0,0);
+}
