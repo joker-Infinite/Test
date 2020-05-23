@@ -33,5 +33,43 @@
   /*transform: scale(-1.2);*/
   /*旋转 20度会发生形变*/
   /*transform: skew(20deg);*/
-  transform: matrix(0.866,0.5,-0.5,0.866,0,0);
+  transform: matrix(0.866, 0.5, -0.5, 0.866, 0, 0);
+}
+
+.btn {
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #dcdfe6;
+  text-align: center;
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 14px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: 0.1s;
+  outline: none !important;
+}
+
+.btn:hover {
+  background: rgba(236, 245, 255, 1);
+  color: #409eff;
+}
+
+.btn:active {
+  background: rgba(236, 245, 255, 1);
+  border: 1px solid #3d8de9;
+  color: #409eff;
+}
+
+/*三角形*/
+.triangle {
+  width: 0;
+  height: 0;
+  border-width: 40px;
+  border-style: solid;
+  /*border-color:#FFCCCC #0099CC #996699 #339933;*/
+  border-color: #FFF #38d #FFF #FFF;
 }
