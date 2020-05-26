@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>吸顶</title>
+  <link href="../css/index.css" rel="stylesheet" type="text/css">
+</head>
+<body style="width: 100%;height: 2000px;background: #bbbbbb">
+<div style="width: 100%;height: 100px"></div>
+<div id="cell" style="width: 100%;background: #3388dd;height: 100px;"></div>
+</body>
+<script>
+  let cell = document.getElementById('cell');
+  document.onscroll = function () {
+    let scroll = document.body.scrollTop || document.documentElement.scrollTop;//滚动条到可视文档去顶部的距离
+    if (100 <= scroll) {
+      cell.style.top = '0px';
+      cell.style.position = 'fixed';
+    } else {
+      cell.style.position = 'static';
+    }
+  }
+</script>
+</html>
