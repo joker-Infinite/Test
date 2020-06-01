@@ -14,7 +14,7 @@
 <body>
 <div>
   <select class="select" id="province" onchange="provinceChange()"></select>
-  <select class="select" id="city"></select>
+  <select class="select" id="city" onchange="cityChange()"></select>
   <select class="select" id="area"></select>
 </div>
 </body>
@@ -45,21 +45,35 @@
   let province = document.getElementById('province');
   let city = document.getElementById('city');
   let area = document.getElementById('area');
-  let node = '';
+  // console.log(110.51*2+130.6*2+210.97*5+72.71*12+962.04*2+261.2*7+100.46+181.77*5+7225);
   for (let i = 0; i < pres.length; i++) {
     province.innerHTML += '<option>' + pres[i] + '</option>';
   }
+  cityData();
 
   function provinceChange() {
+    cityData();
+  }
+
+  function cityChange() {
+    areaData(cities[0]);
+  }
+
+  function cityData() {
     let i = pres.indexOf(province.value);
-    let c = city.getElementsByTagName('option');
-    if (c.length > 0) {
-      for (let m of c) {
-        city.removeChild(m);
-      }
-    }
+    city.innerHTML = '';
     for (let j = 0; j < cities[i].length; j++) {
       city.innerHTML += '<option>' + cities[i][j] + '</option>'
+    }
+    areaData();
+  }
+
+  function areaData() {
+    let i = pres.indexOf(province.value);
+    let m = cities[i].indexOf(city.value);
+    area.innerHTML = '';
+    for (let j = 0; j < areas[i][m].length; j++) {
+      area.innerHTML += '<option>' + areas[i][m][j] + '</option>'
     }
   }
 </script>
