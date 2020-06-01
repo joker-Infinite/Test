@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百叶窗</title>
+  <link rel="stylesheet" href="../css/index.css" type="text/css">
+  <style>
+    .boxs > div {
+      width: 100px;
+      height: 500px;
+      float: left;
+      transition: linear 0.3s;
+    }
+
+    .boxs > div:first-child {
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+<div class="boxs" style="width: 900px;height: 500px;margin: auto;padding-left: 100px">
+  <div style="background: #3388dd"></div>
+  <div style="background: #520"></div>
+  <div style="background: #131890"></div>
+  <div style="background: #667777"></div>
+  <div style="background: #321"></div>
+  <div style="background: #43e"></div>
+  <div style="background: #300"></div>
+</div>
+</body>
+<script>
+  let box = document.getElementsByClassName('boxs')[0].getElementsByTagName('div');
+  let indexs = 0;
+  for (let i = 0; i < box.length; i++) {
+    box[i].onclick = function () {
+      indexs = i;
+      box[i].style.width = '200px';
+      for (let j = 0; j < box.length; j++) {
+        if (indexs !== j) {
+          box[j].style.width = '100px';
+        }
+      }
+    }
+  }
+</script>
+</html>
