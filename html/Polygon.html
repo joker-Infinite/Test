@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>多边形</title>
+</head>
+<body>
+<div style="width: 100%">
+  <div style="width: 1800px;height: 900px;margin: auto">
+    请输入多边形的边数：<input id="side">
+    <button onclick="confirm()">确定</button>
+    <canvas id="myCanvas" width="1800" height="900" style="border:1px solid #d3d3d3;margin: auto"></canvas>
+  </div>
+</div>
+</body>
+<script>
+
+  function painting(n) {
+    let c = document.getElementById("myCanvas");
+
+    let ctx = c.getContext("2d");
+
+    ctx.translate(700, 100);
+
+    ctx.beginPath();
+
+    let side = n;
+
+    for (let i = 0; i < side; i++) {
+      //根据边数计算出每一个内角的度数，利用2d旋转效果画出过变形
+      ctx.moveTo(0, 0);
+
+      ctx.lineTo(2000 / side, 0);
+
+      ctx.translate(2000 / side, 0);
+
+      ctx.rotate((180 - (side - 2) * 180 / side) * Math.PI / 180);//多边形内角和为360度
+
+    }
+
+    ctx.stroke();
+
+  }
+
+  painting(4);
+
+  function confirm() {
+    let c = document.getElementById("myCanvas");
+    let num = document.getElementById('side');
+    c.setAttribute('height', 900);//重新给canvas高度，以清除上次所画内容
+    painting(num.value);
+  }
+</script>
+</html>
