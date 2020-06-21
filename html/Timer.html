@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>计时器</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      width: 1000px;
+      height: 100%;
+      margin: auto;
+    }
+
+    #time {
+      width: 500px;
+      height: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      background: none;
+      border: 1px solid #dcdfe6;
+      text-align: center;
+      padding: 10px 20px;
+      font-weight: 500;
+      font-size: 14px;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: 0.1s;
+      outline: none !important;
+    }
+  </style>
+</head>
+<body>
+<div id="box">
+  <div id="time"></div>
+  <button class="btn" id="start" onclick="start()">开始</button>
+  <button class="btn" id="reset" onclick="reset()">暂停</button>
+</div>
+</body>
+<script>
+  let time = document.getElementById('time');
+  time.value = 0;
+  let num = 0;
+  let clearTime = '';
+  time.innerText = '0天0小时0分0秒0毫秒';
+
+  function start() {
+    clearTime = setInterval('calculatingTime()', 1)
+  }
+
+  function reset() {
+    clearInterval(clearTime);
+  }
+
+  //计算时间
+  function calculatingTime() {
+    num++;
+    processingTime(num);
+  }
+
+  //处理时间
+  function processingTime(data) {
+    time.innerText = parseInt(data / 86400000) + "天" + parseInt((data % 86400000) / 3600000) + "小时" + parseInt(((data % 86400000) % 3600000) / 60000) + "分钟" + parseInt(((data % 86400000) % 3600000) % 60000 / 1000) + "秒" + parseInt(((data % 86400000) % 3600000) % 60000 % 1000) + "毫秒"
+  }
+</script>
+</html>
