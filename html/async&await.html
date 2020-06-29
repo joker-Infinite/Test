@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>async&await</title>
+  <style>
+    #button {
+      width: 40px;
+      height: 30px;
+      background: #3388dd;
+      border-radius: 5px;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<div id="button">点击</div>
+</body>
+<script>
+  let data = '';
+  let i = 0;
+  let button = document.getElementById('button');
+  button.onclick = () => {
+    i++;
+    dy();
+  };
+
+  async function getData() {
+    if (i % 2 === 0) {
+      throw  new Error('出错了！');
+    }
+    return '123';
+  }
+
+  async function cld() {
+    const data = await getData();
+    console.log(data);
+  }
+
+  function dy() {
+    getData().then(r => {
+      console.log(r);
+      data = r;
+    }).catch(e => {
+      console.log(e);
+    });
+  }
+</script>
+</html>
