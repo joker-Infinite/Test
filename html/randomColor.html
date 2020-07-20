@@ -60,7 +60,7 @@
       //字符串相加后，得出的仍是字符串
       color += colorArray[Math.floor(Math.random() * 16)];
     }
-    return color;
+    return "#38d";
   }
 
   let color = getColor();
@@ -81,14 +81,26 @@
   function colorConversion(color) {
     let arr = [];
     let str = '';
-    for (let i = 1; i < 7; i += 2) {
-      arr.push(parseInt("0x" + color.slice(i, i + 2)));
+    let l = 0;
+    if (color.length === 7) {
+      l = 2;
+    }
+    if (color.length === 4) {
+      l = 1;
+    }
+    for (let i = 1; i < color.length; i += l) {
+      if (color.length === 4) {
+        arr.push(parseInt("0x" + (color.slice(i, i + l)) + color.slice(i, i + l)));
+      }
+      if (color.length === 7) {
+        arr.push(parseInt("0x" + color.slice(i, i + l)));
+      }
     }
     divRgb.innerText = '(' + arr.join(',') + ')';
     for (let i = 0; i < arr.length; i++) {
       str += arr[i].toString(16);
     }
-    console.log('#'+str);
+    console.log('#' + str);
   }
 
 </script>
