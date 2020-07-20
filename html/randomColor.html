@@ -88,6 +88,7 @@
     if (color.length === 4) {
       l = 1;
     }
+    //16进制-->rgb
     for (let i = 1; i < color.length; i += l) {
       if (color.length === 4) {
         arr.push(parseInt("0x" + (color.slice(i, i + l)) + color.slice(i, i + l)));
@@ -97,10 +98,10 @@
       }
     }
     divRgb.innerText = '(' + arr.join(',') + ')';
+    //rgb-->16进制
     for (let i = 0; i < arr.length; i++) {
       str += arr[i].toString(16);
     }
-    console.log('#' + str);
   }
 
 </script>
