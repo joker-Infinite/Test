@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>print</title>
+  <style type="text/css" midia="print">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .A_4 {
+      margin-left: 150px;
+      width: 1000px;
+      height: 500px;
+      background: #b7b7b7;
+    }
+
+    /*细边框*/
+    table {
+      border-collapse: collapse;
+    }
+
+    table, th, td {
+      border: 1px solid black;
+      line-height: 35px;
+      padding: 0 5px;
+    }
+
+    /*内容*/
+    .content {
+      width: 200px !important;
+    }
+
+    .title {
+      height: 80px;
+      line-height: 80px;
+    }
+
+    .title_text {
+      padding: 0 20px;
+      font-size: 28px;
+      font-weight: 600;
+      font-family: 'KaiTi';
+    }
+
+    .footers {
+      box-sizing: border-box;
+      width: 971px;
+      height: 40px;
+      list-style: none;
+    }
+
+    .footers > li {
+      float: left;
+      width: 33.3%;
+      height: 40px;
+      line-height: 40px;
+      text-indent: 10px;
+    }
+
+    td {
+      width: 123px; /*这里需要自己调整，根据自己的需求调整宽度*/
+      height: 35px; /*这里需要自己调整，根据自己的需求调整高度*/
+      position: relative;
+    }
+
+    td[class=first]:before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 130px; /*这里需要自己调整，根据td的宽度和高度*/
+      top: 0;
+      left: 0;
+      background-color: black;
+      display: block;
+      transform: rotate(-75deg); /*这里需要自己调整，根据线的位置*/
+      transform-origin: top;
+    }
+
+    @media print {
+      .A_4 {
+        -webkit-print-color-adjust: exact
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="A_4">
+  <div class="title">
+    <span class="title_text">襄阳达安汽车检测中心有限公司委托实验派工单</span>
+    <span>条形码</span>
+  </div>
+  <table border="1">
+    <tr>
+      <td>实验项目厂家</td>
+      <td class="content">东方公司</td>
+      <td>实验任务单号</td>
+      <td class="content">20-LL-11917</td>
+      <td>接收任务时间</td>
+      <td class="content">2020-06-19</td>
+    </tr>
+    <tr>
+      <td>接收任务单位</td>
+      <td class="content">晶研发院 东风物流</td>
+      <td>样车台数/台</td>
+      <td class="content">1</td>
+      <td>计划完成时间</td>
+      <td class="content">2020-11-01</td>
+    </tr>
+    <tr>
+      <td>实验司机</td>
+      <td colspan="5"></td>
+    </tr>
+    <tr>
+      <td class="first">
+        <span style="position: absolute;bottom: -8px;left: 20px">车型</span>
+        <span style="position: absolute;top: -8px;right: 20px">项目</span>
+      </td>
+      <td colspan="5"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="5"></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="5"></td>
+    </tr>
+    <tr>
+      <td>合计</td>
+      <td colspan="5"></td>
+    </tr>
+    <tr>
+      <td>实际工作量确认</td>
+      <td colspan="5"></td>
+    </tr>
+  </table>
+  <ul class="footers">
+    <li>接收实验单位签字</li>
+    <li>制单</li>
+    <li>开单日期 2020 年 09 月 55日</li>
+  </ul>
+</div>
+</body>
+</html>
