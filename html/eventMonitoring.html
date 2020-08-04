@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件监听</title>
+</head>
+<body>
+<button onclick="clickBtn()">点击</button>
+<button id="click">事件监听</button>
+<button id="btn">事件监听-多个触发</button>
+</body>
+<script>
+  function clickBtn() {
+    execute(first, '第二个函数')
+  }
+
+  function execute(otherFunction, value) {
+    alert('第一个函数！' + '---execute');
+    otherFunction(value);
+  }
+
+  function first(value) {
+    alert(value + '---first');
+  }
+
+  //W3C规范【语法】
+  /*
+  element.addEventListener(event, function, useCapture)
+
+  event : （必需）事件名，支持所有DOM事件 。
+
+  function：（必需）指定要事件触发时执行的函数。
+
+  useCapture：（可选）指定事件是否在捕获或冒泡阶段执行。true，捕获。false，冒泡。默认false。
+  */
+
+  document.getElementById('click').addEventListener('click', click, true);
+
+  function click() {
+    alert('事件监听-w3c');
+  }
+
+  //IE规范 【语法】
+  /*
+  element.attachEvent(event, function)
+
+  event：（必需）事件类型。需加“on“，例如：onclick。
+
+  function：（必需）指定要事件触发时执行的函数。
+  */
+  document.getElementById('click').addEventListener('click', click_IE);
+
+  function click_IE() {
+    alert('事件监听-ie');
+  }
+
+  //事件监听的优点（绑定多个事件并且都会执行）;常规的事件绑定只会执行最后一个事件
+  let btn = document.getElementById('btn');
+  btn.addEventListener('click', f1);
+  btn.addEventListener('click', f2);
+
+  function f1() {
+    alert('f1')
+  }
+
+  function f2() {
+    alert('f2')
+  }
+
+  //onload
+  window.addEventListener('load', (event) => {
+    console.log('load');
+  });
+
+  //readystatechange
+  document.addEventListener('readystatechange', (event) => {
+    console.log('readystatechange');
+  });
+
+  //DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', (event) => {
+    console.log('DOMContentLoaded');
+  });
+ /*
+  readystatechange
+  DOMContentLoaded
+  readystatechange
+  load
+ * */
+</script>
+</html>
