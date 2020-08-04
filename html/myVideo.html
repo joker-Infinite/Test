@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我的影视</title>
+</head>
+<body>
+
+</body>
+<script>
+  let data = [];
+  let req = new XMLHttpRequest();
+  req.open("GET", 'https://api.apiopen.top/videoRecommend?id=127398', true);
+  req.send();
+  req.onreadystatechange = function () {
+    if (req.readyState === 4 && req.status === 200) {
+      data = JSON.parse(req.responseText).result;
+      data.forEach(i => {
+        console.log(i);
+      })
+    }
+  }
+</script>
+</html>
