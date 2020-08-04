@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>命名空间</title>
+</head>
+<body>
+
+</body>
+<script>
+  //如果window上没有myData这个对象（空间），我们就新建一个
+  if (!window.myData) {
+    window.myData = {};
+  }
+  //空间 a
+  let a = {};
+  a.people = '王五';
+  a.getName = function () {
+    return a.people;
+  };
+  //将a放入window中我们定义的myData中
+  myData.a = a;
+  //空间b
+  let b = {
+    people: '张三',
+    setName: function () {
+      b.people = '赵六'
+    }
+  };
+  //将b放入window中我们定义的myData中
+  myData.b = b;
+  //输出不同空间中的同一变量名的参数
+  console.log(window.myData.a.people);
+  console.log(window.myData.b.people);
+  //调用空间中的方法
+  window.myData.b.setName();
+  console.log(window.myData.b.people)
+</script>
+</html>
