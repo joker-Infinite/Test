@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>prototype</title>
+</head>
+<body>
+
+</body>
+<script>
+  function Person() {
+  }
+
+  let obj = {
+    m: 0
+  };
+  let y = 0;
+  let person1 = new Person();
+  person1.age = 20;
+
+  function aa(person1, obj, y) {
+    obj.m = 99;
+    y = 89;
+    return person1.age = 90;
+  }
+
+  aa(person1, obj, y);
+
+  console.log(person1.age);
+  console.log(obj.m);
+  console.log(y);
+</script>
+</html>
