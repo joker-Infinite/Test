@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>prototype</title>
+  <style>
+    body {
+      background: url("../img/1.jpg") no-repeat fixed top left,
+      url("../img/5.jpg") no-repeat fixed top right,
+      url("../img/3.jpg") no-repeat fixed bottom right,
+      url("../img/4.jpg") no-repeat fixed bottom left;
+      background-size: 30% 30%;
+    }
+  </style>
+</head>
+<body>
+
+</body>
+<script>
+  function Person() {
+  }
+
+  Person.prototype.name = 'Tom';
+  // Person.name = 'Tom'; person1.name = undefined
+
+  let person1 = new Person();
+  let person2 = new Person();
+  console.log(person1.name);//Tom
+  console.log(person2.name);//Tom
+  console.log(Person.prototype === person1.__proto__)
+  console.log(Person === Person.prototype.constructor)
+  console.log(person1.constructor === Person)
+</script>
+</html>
