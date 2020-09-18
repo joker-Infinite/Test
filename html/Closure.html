@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>闭包</title>
+</head>
+<body>
+
+</body>
+<script>
+  let i = 0;
+
+  function fun() {
+    let i = 1;
+    (function f() {
+      let i = 1;
+      console.log(i);
+      i++;
+    })();
+    console.log(i)
+  }
+
+  console.log(i);
+  fun();
+</script>
+</html>
