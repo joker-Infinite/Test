@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>promise</title>
+</head>
+<body>
+
+</body>
+<script>
+  const promise1 = Promise.resolve(3);
+  const promise2 = 42;
+  const promise3 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 100, 'foo');
+  });
+
+  //等待所有函数调用完成
+  async function cs() {
+    const [a, b, c] = await Promise.all([promise1, promise2, promise3]);
+    console.log(a)
+    console.log(b)
+    console.log(c)
+  }
+
+  cs();
+
+  Promise.all([promise1, promise2, promise3]).then(values => {
+    console.log(values);
+  });
+</script>
+</html>
