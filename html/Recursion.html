@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>递归</title>
+</head>
+<body>
+
+</body>
+<script>
+  let fun = (function f(a, n = 1, b = []) {
+    if (a % n === 0) {
+      b.push(n)
+    }
+    n++;
+    if (n > a) {
+      return b
+    }
+    return f(a, n, b) // *** 要返回整个函数，不能只是return b
+  });
+
+  console.log(fun(100));
+</script>
+</html>
