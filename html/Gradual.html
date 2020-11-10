@@ -5,6 +5,10 @@
   <title>Title</title>
   <link rel="stylesheet" type="text/css" href="../css/index.css">
   <style>
+    .boxs {
+      width: 100%;
+    }
+
     .boxs div {
       position: absolute;
       transition: 1s;
@@ -18,12 +22,12 @@
   <div class="c" style="width: 100%;position: absolute;display: flex;">
     <div style="width: 800px;background: #38d;height: 50px"></div>
   </div>
-  <div class="c" style="width: 800px;position: absolute;display: flex;">
-    <div style="width: 800px;background: #666;height: 50px"></div>
-  </div>
-  <div class="c" style="width: 800px;position: absolute;display: flex;">
-    <div style="width: 800px;background: #326;height: 50px"></div>
-  </div>
+   <div class="c" style="width: 800px;position: absolute;display: flex;">
+     <div style="width: 800px;background: #666;height: 50px"></div>
+   </div>
+  <!-- <div class="c" style="width: 800px;position: absolute;display: flex;">
+     <div style="width: 800px;background: #326;height: 50px"></div>
+   </div>-->
 </div>
 </body>
 <script>
@@ -31,16 +35,18 @@
 
   function start() {
     let child = document.getElementsByClassName('boxs')[0].getElementsByClassName('c');
-    if (i % 2 == 0) {
-      child[0].style.right = '500px';
-      child[1].style.right = '400px';
-      child[2].style.right = '300px';
+    if (i % 2 === 0) {
+      child[0].style.right = '0px';
+      child[1].style.right = '1000px';
+      // child[2].style.right = '300px';
     } else {
-      child[0].style.right = '500px';
-      child[1].style.right = '600px';
-      child[2].style.right = '700px';
+      child[0].style.right = '1000px';
+      child[1].style.right = '0';
+      // child[2].style.right = '700px';
     }
     i++;
   }
+
+  setInterval(start, 1000);
 </script>
 </html>
