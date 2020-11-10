@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>区域点击</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #father {
+      background: #3d8de9;
+      width: 500px;
+      height: 500px;
+      margin: auto;
+      position: relative;
+    }
+
+    #child {
+      width: 200px;
+      height: 200px;
+      background: #131890;
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  </style>
+</head>
+<body>
+<div id="father" onclick="clickPoint()">
+  <div id="child"></div>
+</div>
+</body>
+<script>
+
+
+  function clickPoint() {
+    let father = document.getElementById('father');
+    let child = document.getElementById('child');
+
+    //父元素最上方和最左侧到上方和左侧的距离
+    let f_t = father.offsetTop;
+    let f_l = father.offsetLeft;
+    //父元素最下方和最左侧到上方和左侧的距离
+    // let f_b = father.offsetTop + father.offsetHeight;
+    // let f_r = father.offsetLeft + father.offsetWidth;
+
+
+    //父元素最上方和最左侧到上方和左侧的距离
+    let c_t = child.offsetTop;
+    let c_l = child.offsetLeft;
+    //父元素最下方和最左侧到上方和左侧的距离
+    let c_b = c_t + child.offsetHeight;
+    let c_r = c_l + child.offsetWidth;
+
+    //鼠标到浏览器左侧和上侧的距离
+    let mouseLeft = event.clientX + document.body.scrollLeft;//鼠标x位置
+    let mouseTop = event.clientY + document.body.scrollTop;//鼠标y位置
+    //鼠标点击的点在盒子的位置到盒子上方的距离
+    let top = mouseTop - f_t;
+    //鼠标点击的点在盒子的位置到盒子左侧的距离
+    let left = mouseLeft - f_l;
+
+    if (top >= c_t && top <= c_b && left >= c_l && left <= c_r) {
+      console.log('点击了child--坐标(' + top + ',' + left + ')');
+    } else {
+      console.log('点击了father--坐标(' + top + ',' + left + ')');
+    }
+
+  }
+</script>
+</html>
