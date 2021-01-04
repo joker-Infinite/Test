@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>圆</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      background: #f6f6f6;
+    }
+
+    .canvasBox {
+      width: 500px;
+      height: 500px;
+      border: 1px solid #000;
+      position: relative;
+      margin: auto;
+    }
+
+    .timeShow {
+      width: 100px;
+      height: 100px;
+      background: #3d8de9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+<div class="canvasBox">
+  <div class="timeShow"></div>
+  <canvas id="mcs" width="500" height="500"></canvas>
+</div>
+<script>
+  let a = document.getElementById('mcs');
+  let time = document.getElementsByClassName('timeShow')[0];
+  let day = new Date();
+  let mc = a.getContext('2d');
+  let Seconds = day.getSeconds();
+  let Minutes = day.getMinutes();
+  let Hours = day.getHours();
+
+  function paintingSeconds(v) {
+    mc.beginPath();
+    mc.lineWidth = 4;
+    mc.strokeStyle = '#38d';
+    mc.arc(250, 250, 248, 1.5 * Math.PI, 1.5 * Math.PI * (v / 60), false);
+    mc.stroke();
+    mc.closePath();
+  }
+
+  function paintingMinutes(v) {
+    mc.beginPath();
+    mc.lineWidth = 8;
+    mc.strokeStyle = '#38d';
+    mc.arc(250, 250, 226, 1.5 * Math.PI, 1.5 * Math.PI * (v / 60), false);
+    mc.stroke();
+    mc.closePath();
+  }
+
+  function paintingHours(v) {
+    mc.beginPath();
+    mc.lineWidth = 16;
+    mc.strokeStyle = '#38d';
+    mc.arc(250, 250, 210, 1.5 * Math.PI, 1.5 * Math.PI * (v / 12), false);
+    mc.stroke();
+    mc.closePath();
+  }
+
+  setInterval(_ => {
+    Seconds += 0.01;
+    time.innerText = parseInt(Seconds) + 's';
+    paintingSeconds(Seconds);
+    if (Seconds > 60) {
+      Seconds = 0;
+      mc.clearRect(0, 0, 500, 500);
+      Minutes++;
+      paintingMinutes(Minutes);
+      paintingHours(Hours);
+    }
+    if (Minutes == 60) {
+      Minutes = 0;
+      Hours++;
+      paintingHours(Hours)
+    }
+  }, 10);
+  paintingMinutes(Minutes);
+  paintingHours(Hours);
+</script>
+</body>
+
+</html>
