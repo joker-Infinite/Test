@@ -11,7 +11,7 @@
 
     body {
       width: 100%;
-      height: 900px;
+      height: 100%;
       background: #d3d3d3
     }
 
@@ -26,10 +26,9 @@
     .box {
       width: 400px;
       height: 400px;
-      margin: 400px auto;
       background: #d3d3d3;
       transition: linear 0.5s;
-      animation: myfirst 4s;
+      animation: myfirst 2s;
       animation-iteration-count: infinite;
     }
 
@@ -68,5 +67,15 @@
   <div class="heart turnLeft"></div>
   <div class="heart turnRight"></div>
 </div>
+<script>
+  let box = document.getElementsByClassName('box')[0];
+  let body = document.getElementsByTagName('body')[0];
+  body.onmousemove = _ => {
+    let left = event.clientX;
+    let top = event.clientY;
+    box.style.marginLeft = left - 300 + 'px';
+    box.style.marginTop = top - 300 + 'px';
+  }
+</script>
 </body>
 </html>
